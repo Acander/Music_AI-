@@ -1,16 +1,21 @@
-# This is a sample Python script.
+import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
 
-# Press Skift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def generate_sequential_model():
+    model = keras.Sequential()
+    # Add an Embedding layer expecting input vocab of size 1000, and
+    # output embedding dimension of size 64.
+    model.add(layers.Embedding(input_dim=1000, output_dim=64))
 
+    # Add a LSTM layer with 128 internal units.
+    model.add(layers.LSTM(128))
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    # Add a Dense layer with 10 units.
+    model.add(layers.Dense(10))
 
+    model.summary()
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    generate_sequential_model()
